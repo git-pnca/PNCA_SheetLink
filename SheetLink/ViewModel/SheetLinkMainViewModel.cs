@@ -213,6 +213,8 @@ namespace PNCA_SheetLink.SheetLink.ViewModel
         {
             ScheduleDataFromElements scheduleDataFromElements = new ScheduleDataFromElements();
             var dataTableData = scheduleDataFromElements.CreateScheduleDataTable(_document,schedule);
+            ExcelWriter writer = new ExcelWriter(filePath);
+            writer.CreateExcelFile(dataTableData);
         }
 
         #endregion

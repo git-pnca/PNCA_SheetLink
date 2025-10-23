@@ -25,6 +25,22 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
+        <Grid Grid.Row="5" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Action Buttons with Command Binding -->
+            <Button Content="Export" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                Width="90" Height="20"
+                Command="{Binding ExportCommand}" Margin="0,0,20,0"/>
+
+            <Button Content="Cancel" HorizontalAlignment="Left" 
+                Margin="20,0,0,0" VerticalAlignment="Center" 
+                Grid.Column="1" Width="103" Height="20"
+                Command="{Binding CancelCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+        </Grid>
         <!-- Radio Buttons with Binding -->
         <RadioButton Content="Active View" 
                     IsChecked="{Binding IsActiveViewSelected}"
@@ -65,16 +81,6 @@
                 Width="70" Height="20"
                 Command="{Binding BrowseSaveLocationCommand}" Margin="20,0,0,0"/>
 
-        <!-- Action Buttons with Command Binding -->
-        <Button Content="Export" HorizontalAlignment="Center" 
-                Margin="0,29,0,0" Grid.Row="5" VerticalAlignment="Top" 
-                Width="90" Height="20"
-                Command="{Binding ExportCommand}"/>
 
-        <Button Content="Cancel" HorizontalAlignment="Left" 
-                Margin="0,29,0,0" Grid.Row="5" VerticalAlignment="Top" 
-                Grid.Column="1" Width="103" Height="20"
-                Command="{Binding CancelCommand}"
-                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
     </Grid>
 </Window>
