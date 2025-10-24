@@ -13,12 +13,15 @@ namespace PNCA_SheetLink.SheetLink.Model
 
             // Build columns dynamically
             dataTable.Columns.Add("ElementId");
-            var allFieldNames = scheduledElements
-                .SelectMany(e => e.ScheduledFields.Select(f => f.FieldName))
-                .Distinct();
+            var orderedFields = scheduledElements
+            .SelectMany(e => e.ScheduledFields)
+            .GroupBy(f => f.FieldName)                // Avoid duplicate column names
+            .Select(g => g.First())                   // Take the first occurrence
+            .OrderBy(f => f.FieldIndex)               // Sort by FieldIndex
+            .ToList();
 
-            foreach (var fieldName in allFieldNames)
-                dataTable.Columns.Add(fieldName);
+            foreach (var field in orderedFields)
+                dataTable.Columns.Add(field.FieldName);
 
             // Fill rows
             foreach (var element in scheduledElements)

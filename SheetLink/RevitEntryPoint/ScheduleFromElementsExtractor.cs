@@ -33,9 +33,6 @@ namespace PNCA_SheetLink.SheetLink.RevitEntryPoint
             helper.Owner = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
 
             mainWindow.ShowDialog();               
-            
-
-            //var dataTableData = scheduleDataFromElements.CreateScheduleDataTable(document);
 
             return Result.Succeeded;
         }

@@ -211,8 +211,8 @@ namespace PNCA_SheetLink.SheetLink.ViewModel
 
         private void ExportScheduleToExcel(ViewSchedule schedule, string filePath)
         {
-            ScheduleDataFromElements scheduleDataFromElements = new ScheduleDataFromElements();
-            var dataTableData = scheduleDataFromElements.CreateScheduleDataTable(_document,schedule);
+            ScheduleDataFromElements scheduleDataFromElements = new ScheduleDataFromElements(schedule);
+            var dataTableData = scheduleDataFromElements.CreateScheduleDataTable(_document);
             ExcelWriter writer = new ExcelWriter(filePath);
             writer.CreateExcelFile(dataTableData);
         }
